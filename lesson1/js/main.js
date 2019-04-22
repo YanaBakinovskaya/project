@@ -1,30 +1,73 @@
 'use strict';
 
-let money = prompt('Ваш бюджет на месяц?'),
+let money = +prompt('Ваш бюджет на месяц?'),
     time = prompt('Введите дату в формате YYYY-MM-DD');
 
-let articleOne = prompt('Введите обязательную статью расходов в этом месяце?'),
-    articleTwo = prompt('Введите обязательную статью расходов в этом месяце?'),
-    howCostOne = prompt('Во сколько обойдется?', articleOne),
-    howCostTwo = prompt('Во сколько обойдется?', articleTwo);
-
 let appData = {
+  budget: money,
+  timeData: time,
   expenses : {},
   optionalExpenses: {},
   income: [],
   savings: false
-};
-appData.budget = money;
-appData.timeData = time;
-//let expenses = {};
-//expenses[howCostOne] = howCostTwo;
-//appData.expenses[articleOne] = howCostOne;
-//appData.expenses[articleTwo] = howCostTwo;
+};    
+
 appData.expenses[howCostOne] = howCostTwo;
-console.log(appData.expenses);
+for (let i = 0; i < 2; i++) {
+  let article = prompt('Введите обязательную статью расходов в этом месяце?'),
+      howCost = prompt('Во сколько обойдется?', article);
+  if ( (typeof(article)) === 'string' && (typeof(article)) != null && (typeof(howCost)) != null && article != '' && howCost != '' && article.length < 50) {
+    appData.expenses[article] = howCost;
+  } else {
+    i = i - 1;
+  }
+  // if ( (typeof(article)) === 'string' && article != null && howCost != null && article != '' && howCost != '' && article.length < 50) {
+  //   appData.expenses[article] = howCost;
+  // } else {
+  //   i = i - 1;
+  // }
+}
+
+//  let i = 0;
+//  while (i < 2) {
+//   let article = prompt('Введите обязательную статью расходов в этом месяце?'),
+//       howCost = prompt('Во сколько обойдется?', article);
+
+//   if ( (typeof(article)) === 'string' && article != null && howCost != null && article != '' && howCost != '' && article.length < 50) {
+//     appData.expenses[article] = howCost;
+//   } else {
+//     i = i - 1;
+//   }
+//  i++;
+// }
+
+// do {
+//   let article = prompt('Введите обязательную статью расходов в этом месяце?'),
+//       howCost = prompt('Во сколько обойдется?', article);
+
+//   if ( (typeof(article)) === 'string' && article != null && howCost != null && article != '' && howCost != '' && article.length < 50) {
+//     appData.expenses[article] = howCost;
+//   } else {
+//     //i = i - 1;
+//   }
+//   i++;
+// }
+// while (i < 2);
 console.log(appData);
-const str = 'Ваш бюджет в день cоставит:';
-let budgetPerDay = Math.round(((money - howCostOne - howCostTwo) / 30), 0),
+const str = 'Ваш бюджет в день cоставит: ';
+let budgetPerDay = Math.round((money / 30), 0), //budgetPerDay.toFixed(); округляет до целого
     inform = str + ' ' + budgetPerDay;
-console.log(budgetPerDay);
-alert(inform);
+
+appData.moneyPerDay = appData.budget / 30;
+alert(str + appData.moneyPerDay);
+
+if (appData.moneyPerDay < 100) {
+  console.log('минимальный уровень достатка');
+} else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+  console.log('средний уровень достатка');
+} else if (appData.moneyPerDay > 2000) {
+  console.log('высокий уровень достатка');
+} else {
+  console.log('Произошла ошибка');
+
+}
