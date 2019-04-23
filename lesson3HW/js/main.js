@@ -31,37 +31,10 @@ function chooseExpenses() {
     } else {
       i = i - 1;
     }
-    // if ( (typeof(article)) === 'string' && article != null && howCost != null    
   }
 }
 
 chooseExpenses();
-
-//  let i = 0;
-//  while (i < 2) {
-//   let article = prompt('Введите обязательную статью расходов в этом месяце?'),
-//       howCost = prompt('Во сколько обойдется?', article);
-
-//   if ( (typeof(article)) === 'string' && article != null && howCost != null && article != '' && howCost != '' && article.length < 50) {
-//     appData.expenses[article] = howCost;
-//   } else {
-//     i = i - 1;
-//   }
-//  i++;
-// }
-
-// do {
-//   let article = prompt('Введите обязательную статью расходов в этом месяце?'),
-//       howCost = prompt('Во сколько обойдется?', article);
-
-//   if ( (typeof(article)) === 'string' && article != null && howCost != null && article != '' && howCost != '' && article.length < 50) {
-//     appData.expenses[article] = howCost;
-//   } else {
-//     //i = i - 1;
-//   }
-//   i++;
-// }
-// while (i < 2);
 
 console.log(appData);
 
